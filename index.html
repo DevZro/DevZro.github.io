@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oluwasemilore Adelaja | Deep Learning Engineer</title>
+<meta name="description" content="Data scientist and machine learning engineer specialising in deep learning. I build things from scratch: a NumPy deep learning framework, a bitboard chess engine, an AlphaZero-style agent, and a transformer from the paper up.">
+<meta name="author" content="Oluwasemilore Adelaja">
+<meta name="theme-color" content="#08090e">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Oluwasemilore Adelaja | Deep Learning Engineer">
+<meta property="og:description" content="Deep learning from first principles. Built from scratch, like everything else here.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9823;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ BOOT SEQUENCE ============
+     One short beat on first load, then dismissed for the session.
+     Removed entirely under prefers-reduced-motion.            -->
+<div class="boot" id="boot" role="status" aria-live="polite" aria-label="Loading">
+  <div class="boot__inner">
+    <ul class="boot__lines mono" id="bootLines">
+      <li><span class="boot__tick" aria-hidden="true">&#10003;</span> INITIALIZING</li>
+      <li><span class="boot__tick" aria-hidden="true">&#10003;</span> LOADING PROJECTS</li>
+      <li><span class="boot__tick" aria-hidden="true">&#10003;</span> LOADING MODELS</li>
+    </ul>
+    <div class="boot__bar"><b id="bootBar"></b></div>
+    <p class="boot__ready mono" id="bootReady">System ready</p>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__logo" href="#main" aria-label="Home">
+      <span class="nav__logo-mark" aria-hidden="true">&#9823;</span>
+      <span>DevZro</span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#writing">Writing</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <!-- Theme switcher: a radiogroup of three named themes, keyboard driven -->
+      <div class="themes" id="themes" role="radiogroup" aria-label="Colour theme">
+        <span class="themes__thumb" id="themesThumb" aria-hidden="true"></span>
+        <button class="themes__opt" role="radio" data-theme-value="system" aria-checked="true" title="System theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <span class="sr-only">System theme</span>
+        </button>
+        <button class="themes__opt" role="radio" data-theme-value="terminal" aria-checked="false" title="Terminal theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l2.5 2.5L7 14M12.5 15h4"/></svg>
+          <span class="sr-only">Terminal theme</span>
+        </button>
+        <button class="themes__opt" role="radio" data-theme-value="neural" aria-checked="false" title="Neural theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="7" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="19" cy="17" r="2"/><path d="M7 7.7l3 3.1M7 16.3l3-3.1M14 11.1l3-3.1M14 12.9l3 3.1"/></svg>
+          <span class="sr-only">Neural theme</span>
+        </button>
+      </div>
+
+      <a class="btn btn--ghost btn--sm" href="https://github.com/DevZro" target="_blank" rel="noopener">GitHub</a>
+
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+    <span class="nav__progress" id="navProgress" aria-hidden="true"></span>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <canvas class="hero__canvas" id="netCanvas" aria-hidden="true"></canvas>
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="wrap hero__inner">
+    <p class="hero__eyebrow">
+      <span class="dot" aria-hidden="true"></span>
+      Open to roles and collaborations
+    </p>
+
+    <h1 class="hero__title">
+      Deep learning,<br>
+      <span class="grad">from first principles.</span>
+    </h1>
+
+    <p class="hero__role">
+      <span class="hero__role-label">Role</span>
+      <span class="hero__role-slot" id="roleSlot"><span class="sr-only">Engineer, builder, ML developer, problem solver</span></span>
+      <span class="hero__role-caret" aria-hidden="true"></span>
+    </p>
+
+    <p class="hero__lede">
+      I'm <strong>Oluwasemilore Adelaja</strong>, a data scientist and machine learning
+      engineer. I build the things most people import: a deep learning framework in raw
+      NumPy, a bitboard chess engine, an AlphaZero-style agent, a transformer from the
+      paper up. Currently studying Mechanical Engineering at the University of Lagos.
+    </p>
+
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="#work">See the work <span class="btn__arrow" aria-hidden="true">&#8594;</span></a>
+      <a class="btn btn--ghost" href="Dev%20Zero.pdf" target="_blank" rel="noopener">Resume <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+
+    <dl class="hero__stats">
+      <div class="stat">
+        <dt class="mono">Focus</dt>
+        <dd><span class="stat__num">Deep learning</span>Built from scratch, not imported</dd>
+      </div>
+      <div class="stat">
+        <dt class="mono">Projects here</dt>
+        <dd><span class="stat__num" id="statCount">7</span>Each one a system, not a notebook</dd>
+      </div>
+      <div class="stat">
+        <dt class="mono">Currently</dt>
+        <dd><span class="stat__num">Chess engine</span>Bitboards, search, evaluation</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="section section--alt" id="work">
+  <span class="section__seam" aria-hidden="true"></span>
+  <div class="wrap">
+
+    <div class="sec-head reveal">
+      <p class="sec-head__kicker"><span class="mono">01</span> Selected work <span class="sec-head__rule"></span></p>
+      <h2 class="sec-head__title">Systems, not notebooks</h2>
+      <p class="sec-head__sub">
+        Seven builds, each one taken far enough to break. Open any of them for the full
+        case study: the problem, the architecture, what the implementation actually
+        involved, and what it taught me.
+      </p>
+    </div>
+
+    <div class="filters reveal" role="group" aria-label="Filter projects by category">
+      <button class="chip is-active" type="button" aria-pressed="true" data-filter="all">All</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="deep-learning">Deep learning</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="game-ai">Game AI</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="applied-ml">Applied ML</button>
+    </div>
+
+    <!-- Rendered from the registry in projects.js -->
+    <div class="bento" id="projectGrid"></div>
+    <p class="grid__empty" id="gridEmpty" hidden>No projects in that category yet.</p>
+
+    <div class="more reveal">
+      <a class="btn btn--ghost" href="https://github.com/DevZro?tab=repositories" target="_blank" rel="noopener">
+        All repositories on GitHub <span class="btn__arrow" aria-hidden="true">&#8599;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WRITING ============ -->
+<section class="section" id="writing">
+  <span class="section__seam" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-head__kicker"><span class="mono">02</span> Writing <span class="sec-head__rule"></span></p>
+      <h2 class="sec-head__title">Teaching it back</h2>
+      <p class="sec-head__sub">
+        I write series on Medium that rebuild ideas from the ground up. Every article is
+        paired with clean, runnable code, collected in one repository, each series with
+        its own structure and isolated dependencies.
+      </p>
+    </div>
+
+    <div class="grid--2">
+      <article class="wcard reveal">
+        <span class="wcard__icon" aria-hidden="true">&#129504;</span>
+        <h3 class="wcard__title">Neural Networks Demystified</h3>
+        <p class="wcard__body">
+          A step-by-step journey into how neural networks <em>really</em> work under the
+          hood, implemented entirely in NumPy. The goal is to remove the magic from deep
+          learning and rebuild it with pure math and simple code.
+        </p>
+        <ul class="checks">
+          <li>Neurons, perceptrons and vectorized forward passes</li>
+          <li>Activation and loss functions</li>
+          <li>Backpropagation derived and implemented step-by-step</li>
+          <li>Dense layers, initialization and training loops</li>
+          <li>A NumPy-only MNIST classifier</li>
+        </ul>
+        <div class="pcard__links">
+          <a class="link-arrow" href="https://medium.com/@monsieurblue00" target="_blank" rel="noopener">Read on Medium <span aria-hidden="true">&#8599;</span></a>
+          <a class="link-arrow link-arrow--muted" href="https://github.com/DevZro/Medium/tree/main/Neural%20Networks%20Demystifed" target="_blank" rel="noopener">Code <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      </article>
+
+      <article class="wcard reveal">
+        <span class="wcard__icon" aria-hidden="true">&#128274;</span>
+        <h3 class="wcard__title">The Art of Secrecy</h3>
+        <p class="wcard__body">
+          A hands-on exploration of classical and modern cryptographic systems. Every
+          article comes with a clean Python implementation that shows how the cipher
+          actually works, rather than describing it from a distance.
+        </p>
+        <ul class="checks">
+          <li>Caesar, Vigen&egrave;re and substitution ciphers</li>
+          <li>A full, modular Enigma machine simulation</li>
+          <li>Rotors with ring settings and turnover positions</li>
+          <li>Reflectors and plugboard</li>
+          <li>Custom rotor orders and a complete encrypt/decrypt pipeline</li>
+        </ul>
+        <div class="pcard__links">
+          <a class="link-arrow" href="https://medium.com/@monsieurblue00" target="_blank" rel="noopener">Read on Medium <span aria-hidden="true">&#8599;</span></a>
+          <a class="link-arrow link-arrow--muted" href="https://github.com/DevZro/Medium/tree/main/The%20Art%20of%20Secrecy" target="_blank" rel="noopener">Code <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============
+     Grouped by category. No proficiency percentages, because there is no
+     honest way to measure one. Each entry points at where it was used. -->
+<section class="section section--alt" id="skills">
+  <span class="section__seam" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-head__kicker"><span class="mono">03</span> Capabilities <span class="sec-head__rule"></span></p>
+      <h2 class="sec-head__title">What I reach for</h2>
+      <p class="sec-head__sub">
+        No percentage bars, since there is no honest way to score yourself out of a
+        hundred. Instead, every item points at the project where I actually used it.
+      </p>
+    </div>
+
+    <div class="skills reveal" id="skills-list">
+      <div class="skillgroup">
+        <div class="skillgroup__head">
+          <span class="skillgroup__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg></span>
+          <h3 class="skillgroup__title">Languages</h3>
+        </div>
+        <ul class="skilllist">
+          <li>Python <span class="skilllist__where">most of this page</span></li>
+          <li>C# <span class="skilllist__where"><a href="#work" data-open="chess">Chess engine</a></span></li>
+          <li>LaTeX <span class="skilllist__where"><a href="#work" data-open="lecturekit">LectureKit</a></span></li>
+        </ul>
+      </div>
+
+      <div class="skillgroup">
+        <div class="skillgroup__head">
+          <span class="skillgroup__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="5" cy="7" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 7.7l3 3.1M7 16.3l3-3.1M14 12h3"/></svg></span>
+          <h3 class="skillgroup__title">Machine learning</h3>
+        </div>
+        <ul class="skilllist">
+          <li>Deep learning <span class="skilllist__where"><a href="#work" data-open="mrn">MR &amp; N</a></span></li>
+          <li>Reinforcement learning <span class="skilllist__where"><a href="#work" data-open="hexapawn">Hexapawn</a></span></li>
+          <li>Computer vision <span class="skilllist__where"><a href="#work" data-open="mrn">MR &amp; N</a></span></li>
+          <li>NLP <span class="skilllist__where"><a href="#work" data-open="transformer">Transformer</a></span></li>
+          <li>Transfer learning <span class="skilllist__where"><a href="#work" data-open="audionet">AudioNet</a></span></li>
+        </ul>
+      </div>
+
+      <div class="skillgroup">
+        <div class="skillgroup__head">
+          <span class="skillgroup__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+          <h3 class="skillgroup__title">Libraries and data</h3>
+        </div>
+        <ul class="skilllist">
+          <li>NumPy <span class="skilllist__where"><a href="#work" data-open="mrn">MR &amp; N</a></span></li>
+          <li>PyTorch <span class="skilllist__where"><a href="#work" data-open="transformer">Transformer</a></span></li>
+          <li>SciPy <span class="skilllist__where"><a href="#work" data-open="mrn">MR &amp; N</a></span></li>
+          <li>scikit-learn <span class="skilllist__where"><a href="#work" data-open="stockbot">StockBot</a></span></li>
+          <li>Pandas <span class="skilllist__where"><a href="#work" data-open="stockbot">StockBot</a></span></li>
+        </ul>
+      </div>
+
+      <div class="skillgroup">
+        <div class="skillgroup__head">
+          <span class="skillgroup__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span>
+          <h3 class="skillgroup__title">Engineering</h3>
+        </div>
+        <ul class="skilllist">
+          <li>Backpropagation from scratch <span class="skilllist__where"><a href="#work" data-open="mrn">MR &amp; N</a></span></li>
+          <li>Bitboards and bit manipulation <span class="skilllist__where"><a href="#work" data-open="chess">Chess engine</a></span></li>
+          <li>Alpha-beta search <span class="skilllist__where"><a href="#work" data-open="chess">Chess engine</a></span></li>
+          <li>Monte Carlo Tree Search <span class="skilllist__where"><a href="#work" data-open="hexapawn">Hexapawn</a></span></li>
+          <li>Self-attention <span class="skilllist__where"><a href="#work" data-open="transformer">Transformer</a></span></li>
+        </ul>
+      </div>
+
+      <div class="skillgroup">
+        <div class="skillgroup__head">
+          <span class="skillgroup__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 106.4 6.4L21 13l-8 8-4-4 8-8z"/><path d="M6 21l-3-3 4-4 3 3z"/></svg></span>
+          <h3 class="skillgroup__title">Tools</h3>
+        </div>
+        <ul class="skilllist">
+          <li>Unity <span class="skilllist__where"><a href="#work" data-open="chess">Chess engine</a></span></li>
+          <li>Whisper <span class="skilllist__where"><a href="#work" data-open="lecturekit">LectureKit</a></span></li>
+          <li>Git and GitHub <span class="skilllist__where">every repo</span></li>
+          <li>Alpha Vantage API <span class="skilllist__where"><a href="#work" data-open="stockbot">StockBot</a></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <span class="section__seam" aria-hidden="true"></span>
+  <div class="wrap about">
+    <div class="about__main reveal">
+      <p class="sec-head__kicker"><span class="mono">04</span> About <span class="sec-head__rule"></span></p>
+      <h2 class="sec-head__title">A mechanical engineer who fell for gradients</h2>
+      <p class="about__p">
+        I work as a data scientist and machine learning engineer, specialising
+        specifically in deep learning. I'm studying Mechanical Engineering at the
+        University of Lagos, which is where the habit of taking things apart to see how
+        they work came from, and it just ended up pointed at neural networks.
+      </p>
+      <p class="about__p">
+        Most of what I build starts from scratch, because implementing a thing is the
+        only way I trust that I understand it. That instinct runs from a NumPy-only deep
+        learning framework to a bitboard chess engine, and it's why I write about the
+        internals as much as I build them.
+      </p>
+      <p class="about__p">
+        Right now I'm working toward becoming a serious <strong>chess programmer</strong>.
+        The Hexapawn agent was the warm-up, and the engine is the real thing.
+      </p>
+    </div>
+
+    <aside class="about__side">
+      <div class="panel panel--profile reveal">
+        <h3 class="panel__title mono">USER_PROFILE</h3>
+        <figure class="portrait" id="portraitFig">
+          <img class="portrait__img" src="portrait.jpg" alt="Oluwasemilore Adelaja"
+               width="960" height="1280" loading="lazy" decoding="async"
+               data-fallback="portraitFig">
+          <span class="portrait__brackets" aria-hidden="true"></span>
+          <figcaption class="portrait__cap mono">ADELAJA_O <span aria-hidden="true">&#9679;</span> LAGOS</figcaption>
+        </figure>
+        <dl class="profile">
+          <div><dt>NAME</dt><dd>Oluwasemilore Adelaja</dd></div>
+          <div><dt>ROLE</dt><dd>Data scientist / ML engineer</dd></div>
+          <div><dt>FOCUS</dt><dd>Deep learning</dd></div>
+          <div><dt>INTERESTS</dt><dd>Chess engines, RL, cryptography</dd></div>
+          <div><dt>BUILDING</dt><dd>Bitboard chess engine</dd></div>
+          <div><dt>LOCATION</dt><dd>Lagos, Nigeria</dd></div>
+          <div><dt>STATUS</dt><dd><span class="on">&#9679; open to work</span></dd></div>
+        </dl>
+      </div>
+
+      <div class="panel reveal">
+        <h3 class="panel__title mono">Education</h3>
+        <div class="edu">
+          <p class="edu__school">University of Lagos</p>
+          <p class="edu__degree">B.Sc. Mechanical Engineering</p>
+          <p class="edu__meta mono">Oct 2021 to Jul 2027 &middot; Lagos, Nigeria</p>
+        </div>
+      </div>
+
+      <div class="panel reveal">
+        <h3 class="panel__title mono">Toolkit</h3>
+        <ul class="tags tags--panel">
+          <li>Python</li><li>NumPy</li><li>SciPy</li><li>PyTorch</li>
+          <li>C#</li><li>Unity</li><li>LaTeX</li><li>Deep Learning</li>
+          <li>Reinforcement Learning</li><li>Computer Vision</li><li>NLP</li>
+        </ul>
+      </div>
+
+      <div class="panel reveal">
+        <h3 class="panel__title mono">Languages</h3>
+        <ul class="plain">
+          <li>English</li>
+          <li>Yoruba</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section--contact" id="contact">
+  <span class="section__seam" aria-hidden="true"></span>
+  <div class="wrap contact">
+    <div class="reveal">
+      <p class="sec-head__kicker"><span class="mono">05</span> Contact <span class="sec-head__rule"></span></p>
+      <h2 class="contact__title">Let's build something<br><span class="grad">worth reading about.</span></h2>
+      <p class="contact__sub">
+        Open to roles, research collaborations and anything involving deep learning or
+        chess engines. The fastest way to reach me is email.
+      </p>
+    </div>
+
+    <div class="contact__cards reveal">
+      <a class="ccard" href="mailto:danizhem99@gmail.com">
+        <span class="ccard__label">Contact me</span>
+        <span class="ccard__value">danizhem99@gmail.com</span>
+        <span class="ccard__arrow" aria-hidden="true">&#8599;</span>
+      </a>
+      <a class="ccard" href="tel:+2347038211089">
+        <span class="ccard__label">Phone</span>
+        <span class="ccard__value">+234 703 8211 089</span>
+        <span class="ccard__arrow" aria-hidden="true">&#8599;</span>
+      </a>
+      <a class="ccard" href="https://github.com/DevZro" target="_blank" rel="noopener">
+        <span class="ccard__label">GitHub</span>
+        <span class="ccard__value">@DevZro</span>
+        <span class="ccard__arrow" aria-hidden="true">&#8599;</span>
+      </a>
+      <a class="ccard" href="https://medium.com/@monsieurblue00" target="_blank" rel="noopener">
+        <span class="ccard__label">Medium</span>
+        <span class="ccard__value">@monsieurblue00</span>
+        <span class="ccard__arrow" aria-hidden="true">&#8599;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__loc mono">Abule-Oja, Yaba &middot; Lagos, Nigeria</p>
+    <p class="footer__note mono">Built <b id="secret" tabindex="0" role="button" aria-label="Reveal a small secret">from scratch</b>, like everything else here.</p>
+    <button class="footer__up" id="toTop">&#8593; Top</button>
+  </div>
+</footer>
+
+<!-- ============ CASE STUDY DIALOG ============
+     A single dialog, populated from the registry when opened. -->
+<dialog class="modal" id="modal" aria-labelledby="modalTitle">
+  <div class="modal__shell">
+    <div class="modal__panel" id="modalPanel"></div>
+  </div>
+</dialog>
+
+<!-- ============ POINTER, CONSOLE, EGGS ============ -->
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label" id="cursorLabel"></span></div>
+<div class="hue" id="hue" aria-hidden="true"></div>
+<div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+
+<section class="console" id="console" aria-label="Site console" hidden>
+  <div class="console__bar">
+    <span>devzro</span><b>~</b><span>console</span>
+    <button type="button" id="consoleClose" aria-label="Close console">&#10005;</button>
+  </div>
+  <div class="console__out mono" id="consoleOut" role="log" aria-live="polite"></div>
+  <form class="console__form" id="consoleForm">
+    <span aria-hidden="true">&gt;</span>
+    <label class="sr-only" for="consoleIn">Console command</label>
+    <input id="consoleIn" autocomplete="off" spellcheck="false" placeholder="type help">
+  </form>
+</section>
+
+
+<script src="projects.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
