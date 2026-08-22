@@ -1048,7 +1048,7 @@
       },
       resume: function () {
         print('Opening resume.');
-        window.open('Dev%20Zero.pdf', '_blank', 'noopener');
+        window.open('Oluwasemilore%20Adelaja.pdf', '_blank', 'noopener');
       },
       theme: function (arg) {
         if (!arg) { print('Usage: theme system | terminal | neural'); return; }
