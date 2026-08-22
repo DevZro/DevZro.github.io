@@ -1042,7 +1042,7 @@
         print('Building a bitboard chess engine. Writes about the internals.');
       },
       contact: function () {
-        print('email &nbsp; <a href="mailto:danizhem99@gmail.com">danizhem99@gmail.com</a>');
+        print('email &nbsp; <a href="mailto:oluwasemiloredadelaja@gmail.com">oluwasemiloredadelaja@gmail.com</a>');
         print('github &nbsp;<a href="https://github.com/DevZro" target="_blank" rel="noopener">@DevZro</a>');
         print('medium &nbsp;<a href="https://medium.com/@monsieurblue00" target="_blank" rel="noopener">@monsieurblue00</a>');
       },
